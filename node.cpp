@@ -6,6 +6,8 @@
 
 // Constructor por defecto
 
+collector* collector1 = collector::getInstance();
+
 Node ::Node()
 {
     data = -1;
@@ -18,6 +20,8 @@ Node ::Node(int data_)
     data = data_;
     next = nullptr;
 }
+
+
 
 // Eliminar todos los Nodos
 void Node ::delete_all()
@@ -34,11 +38,6 @@ void Node ::print() {
     cout << data << "-> ";
 }
 
-Node::~Node() {
-
-}
-
-collector* collector1 = new collector();
 
 void *Node::operator new(size_t sz) {
 
@@ -55,7 +54,6 @@ void *Node::operator new(size_t sz) {
 }
 
 void Node::operator delete(void *p) {
-    collector1->setFree((int*) p);
-    collector1->collect();
+
 }
 

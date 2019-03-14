@@ -44,3 +44,13 @@ void collector::setFree(int *pInt) {
     temp->free = true;
 
 }
+
+collector* collector:: instance = nullptr;
+
+collector *collector::getInstance() {
+    if(instance == nullptr){
+        instance = new collector();
+    }
+
+    return instance;
+}

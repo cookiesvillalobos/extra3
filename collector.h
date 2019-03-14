@@ -24,13 +24,13 @@ class collector {
         int free;
         void setFree(int*);
         int* getFreeAd();
-        collector();
-
-
+        static collector* getInstance();
 
 
     private:
         CList clist;
+        static collector* instance;
+        collector();
 
 
 

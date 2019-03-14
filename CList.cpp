@@ -16,12 +16,16 @@ CList::CList()
 // Insertar al final
 void CList::add_end(int* data_)
 {
+    cout << "entra al add_end";
     CNode *new_CNode = new CNode(data_);
     CNode *temp = m_head;
 
     if (!m_head) {
         m_head = new_CNode;
+        cout << "entra !head \n ";
+        this->print();
     } else {
+        cout <<"entra al else de CNode \n";
         while (temp->next != nullptr) {
             temp = temp->next;
         }

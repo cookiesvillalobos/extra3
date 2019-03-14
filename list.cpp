@@ -2,24 +2,28 @@
 
 using namespace std;
 
+collector* collector2  = collector::getInstance();
 // Constructor por defecto
 List::List()
 {
     m_num_nodes = 0;
-    m_head = NULL;
+    m_head = nullptr;
 }
 
 // Insertar al final
 void List ::add_end(int data_)
 {
     Node  *new_node = new Node(data_);
-    collector1->add(&new_node->data);
+    collector2->add(&new_node->data);
     Node  *temp = m_head;
 
     if (!m_head) {
         m_head = new_node;
+        cout <<"entra 1 \n";
+        this->print();
     } else {
-        while (temp->next != NULL) {
+        cout <<"entra al else de add_end \n";
+        while (temp->next != nullptr) {
             temp = temp->next;
         }
         temp->next = new_node;
@@ -47,6 +51,8 @@ void List::deleteVal(int value) {
     if(m_head->data == value){
         m_head->data = 0;
         delete m_head;
+        collector2->setFree((int*) m_head);
+        collector2->collect();
         m_head = temp1;
         length--;
     }else if(temp1->data == value){
@@ -54,6 +60,8 @@ void List::deleteVal(int value) {
         temp->next = temp1->next;
         aux_node->data = 0;
         delete aux_node;
+        collector2->setFree((int*) aux_node);
+        collector2->collect();
     }else{
         temp = temp->next;
         temp1 = temp1->next;

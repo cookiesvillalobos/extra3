@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/kei98/CLionProjects/Datos/Datos II/extra3/CList.cpp
+CList.h
+/home/kei98/CLionProjects/Datos/Datos II/extra3/CList.h
+
 /home/kei98/CLionProjects/Datos/Datos II/extra3/CList.h
 fstream
 -
@@ -21,44 +25,4 @@ CNode.h
 /home/kei98/CLionProjects/Datos/Datos II/extra3/CNode.h
 iostream
 -
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/collector.h
-iostream
--
-CList.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/CList.h
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/list.cpp
-list.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/list.h
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/list.h
-fstream
--
-iostream
--
-string
--
-stdlib.h
--
-node.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/node.h
-node.cpp
-/home/kei98/CLionProjects/Datos/Datos II/extra3/node.cpp
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/main.cpp
-iostream
--
-list.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/list.h
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/node.cpp
-node.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/node.h
-
-/home/kei98/CLionProjects/Datos/Datos II/extra3/node.h
-iostream
--
-collector.h
-/home/kei98/CLionProjects/Datos/Datos II/extra3/collector.h
 

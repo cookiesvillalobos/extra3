@@ -16,7 +16,6 @@ class Node
 public:
     Node();
     Node(int);
-    ~Node();
 
     Node *next;
     int data;
@@ -26,8 +25,7 @@ public:
     void* operator new(size_t);
     void operator delete(void* p);
 
-private:
-    static collector* collector1;
+
 };
 
 #endif // NODE_H

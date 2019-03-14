@@ -10,7 +10,6 @@
 #include <stdlib.h>
 
 #include "node.h"
-#include "node.cpp"
 
 using namespace std;
 
