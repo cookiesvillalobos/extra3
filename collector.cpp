@@ -13,16 +13,18 @@ collector::collector() {
 }
 
 void collector::add(int* direction) {
-    clist.add_end(direction);
-    this->free++;
-//    if (free == 0){
-//        clist.add_end(direction);
-//        return direction;
-//    }
-//    else{
-//        free--;
-//        free_d = clist.search(clist.m_num_nodes-1-free);
-//    }
+    bool in = false;
+    CNode *temp = clist.getHead();
+    for(int i = 0; i < clist.length; i++) {
+        if(direction == temp->data){
+            return;
+        } else{
+            temp = temp->next;
+        }
+    }
+    if(!in){
+        clist.add_end(direction);
+    }
 
 }
 
@@ -53,4 +55,9 @@ collector *collector::getInstance() {
     }
 
     return instance;
+}
+
+void collector::printL() {
+    clist.print();
+
 }

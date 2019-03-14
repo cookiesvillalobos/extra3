@@ -11,27 +11,26 @@ CList::CList()
 {
     m_num_nodes = 0;
     m_head = NULL;
+    length = 0;
 }
 
 // Insertar al final
 void CList::add_end(int* data_)
 {
-    cout << "entra al add_end";
     CNode *new_CNode = new CNode(data_);
     CNode *temp = m_head;
 
     if (!m_head) {
         m_head = new_CNode;
-        cout << "entra !head \n ";
-        this->print();
+
     } else {
-        cout <<"entra al else de CNode \n";
         while (temp->next != nullptr) {
             temp = temp->next;
         }
         temp->next = new_CNode;
     }
     m_num_nodes++;
+    length++;
 }
 
 // Eliminar todos los nodos
@@ -39,6 +38,7 @@ void CList::del_all()
 {
     m_head->delete_all();
     m_head = 0;
+    length = 0;
 }
 
 // Eliminar por posición del nodo
@@ -52,6 +52,7 @@ void CList::del_by_position(int pos)
         cout << "Fuera de rango " << endl;
     } else if (pos == 1) {
         m_head = temp->next;
+        length--;
     } else {
         for (int i = 2; i <= pos; i++) {
             if (i == pos) {
@@ -59,6 +60,7 @@ void CList::del_by_position(int pos)
                 temp->next = temp1->next;
                 delete aux_CNode;
                 m_num_nodes--;
+                length--;
             }
             temp = temp->next;
             temp1 = temp1->next;

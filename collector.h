@@ -25,6 +25,7 @@ class collector {
         void setFree(int*);
         int* getFreeAd();
         static collector* getInstance();
+        void printL();
 
 
     private:

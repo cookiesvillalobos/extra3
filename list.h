@@ -18,7 +18,6 @@ class List
 {
 public:
     List();
-    ~List();
 
     int m_num_nodes;
 
@@ -31,6 +30,7 @@ public:
     int length;
     int* searchValAd(int);
     void deleteVal(int);
+    void printCL();
 
 private:
     Node *m_head;

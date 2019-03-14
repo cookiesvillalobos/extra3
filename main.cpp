@@ -15,24 +15,20 @@ int main()
 
     list_1.add_end(2);
     list_1.add_end(3);
-    cout << "ho \n";
     list_1.add_end(4);
     list_1.add_end(5);
     list_1.add_end(6);
     list_1.add_end(7);
 
     list_1.add_end(8);
-    cout << "li \n";
 
+    list_1.deleteVal(3);
+    list_1.add_end(12);
+    list_1.deleteVal(2);
+    list_1.add_end(15);
     list_1.print();
-/**
+    list_1.printCL();
 
-
-    list_1.search(2);
-    cout << "\n";
-
-    cout << list_1.searchValAd(3);
-**/
 
     return 0;
 }

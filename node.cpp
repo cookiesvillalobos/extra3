@@ -44,6 +44,7 @@ void *Node::operator new(size_t sz) {
     if(collector1->free > 0){
         void* p;
         p = collector1->getFreeAd();
+        collector1->free--;
         return p;
 
     }else {
@@ -54,6 +55,7 @@ void *Node::operator new(size_t sz) {
 }
 
 void Node::operator delete(void *p) {
+    //free(p);
 
 }
 

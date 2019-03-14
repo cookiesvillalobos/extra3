@@ -27,6 +27,7 @@ public:
     void print();
     int* searchForFree();
     CNode* getHead();
+    int length;
 
 private:
     CNode *m_head;

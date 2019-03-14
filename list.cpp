@@ -19,10 +19,7 @@ void List ::add_end(int data_)
 
     if (!m_head) {
         m_head = new_node;
-        cout <<"entra 1 \n";
-        this->print();
     } else {
-        cout <<"entra al else de add_end \n";
         while (temp->next != nullptr) {
             temp = temp->next;
         }
@@ -49,19 +46,28 @@ void List::deleteVal(int value) {
         cout << "Value not founded";
     }
     if(m_head->data == value){
-        m_head->data = 0;
-        delete m_head;
-        collector2->setFree((int*) m_head);
+        collector2->setFree(searchValAd(value));
         collector2->collect();
-        m_head = temp1;
+        m_head = temp->next;
         length--;
     }else if(temp1->data == value){
-        Node *aux_node = temp1;
-        temp->next = temp1->next;
-        aux_node->data = 0;
-        delete aux_node;
-        collector2->setFree((int*) aux_node);
-        collector2->collect();
+        if(temp1->next != nullptr){
+            Node *aux_node = temp1;
+            collector2->setFree((searchValAd(value)));
+            collector2->collect();
+            temp->next = temp1->next;
+            delete aux_node;
+            length--;
+        } else{
+            collector2->setFree((searchValAd(value)));
+            collector2->collect();
+            cout <<"\n";
+            cout <<temp->data;
+            cout <<"\n";
+            temp->next = nullptr;
+            length--;
+        }
+
     }else{
         temp = temp->next;
         temp1 = temp1->next;
@@ -69,34 +75,6 @@ void List::deleteVal(int value) {
 
 }
 
-/**
-// Eliminar por posición del nodo
-void List ::del_by_position(int pos)
-{
-    Node  *temp = m_head;
-    Node  *temp1 = temp->next;
-
-    if (pos < 1 || pos > m_num_nodes) {
-        cout << "Fuera de rango " << endl;
-    } else if (pos == 1) {
-        m_head = temp->next;
-        length--;
-    } else {
-        for (int i = 2; i <= pos; i++) {
-            if (i == pos) {
-                Node  *aux_node = temp1;
-                temp->next = temp1->next;
-                delete aux_node;
-                m_num_nodes--;
-                length--;
-            }
-            temp = temp->next;
-            temp1 = temp1->next;
-        }
-    }
-}
-
-**/
 // Llenar la Lista aleatoriamente para enteros
 
 void List ::fill_random(int dim)
@@ -164,7 +142,12 @@ int* List ::searchValAd(int val) {
     return nullptr;
 }
 
-List ::~List() {}
+void List::printCL() {
+    collector2->printL();
+
+}
+
+
 
 
 
