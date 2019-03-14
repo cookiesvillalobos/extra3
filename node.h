@@ -5,23 +5,29 @@
 #define NODE_H
 
 #include <iostream>
+#include "collector.h"
+
 
 using namespace std;
 
-template <class T>
 
 class Node
 {
 public:
     Node();
-    Node(T);
+    Node(int);
     ~Node();
 
     Node *next;
-    T data;
+    int data;
 
     void delete_all();
     void print();
+    void* operator new(size_t);
+    void operator delete(void* p);
+
+private:
+    static collector* collector1;
 };
 
 #endif // NODE_H

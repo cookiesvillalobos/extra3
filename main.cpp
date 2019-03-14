@@ -1,14 +1,13 @@
 
-#include <iostream>
+#include<iostream>
 
 #include "list.h"
-#include "list.cpp"
 
 using namespace std;
 
 int main()
 {
-    List<int> list_1;
+    List list_1;
 
 
 
@@ -19,10 +18,14 @@ int main()
     list_1.add_end(6);
     list_1.add_end(7);
     list_1.add_end(8);
-
+/**
     list_1.print();
-    list_1.search(2);
 
+    list_1.search(2);
+    cout << "\n";
+
+    cout << list_1.searchValAd(3);
+**/
 
     return 0;
 }

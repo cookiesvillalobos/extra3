@@ -3,19 +3,18 @@
 using namespace std;
 
 // Constructor por defecto
-template <typename T>
-List<T>::List()
+List::List()
 {
     m_num_nodes = 0;
     m_head = NULL;
 }
 
 // Insertar al final
-template<typename T>
-void List<T>::add_end(T data_)
+void List ::add_end(int data_)
 {
-    Node<T> *new_node = new Node<T> (data_);
-    Node<T> *temp = m_head;
+    Node  *new_node = new Node(data_);
+    collector1->add(&new_node->data);
+    Node  *temp = m_head;
 
     if (!m_head) {
         m_head = new_node;
@@ -25,35 +24,63 @@ void List<T>::add_end(T data_)
         }
         temp->next = new_node;
     }
+
     m_num_nodes++;
+    length++;
 }
 
 // Eliminar todos los nodos
-template<typename T>
-void List<T>::del_all()
+
+void List ::del_all()
 {
     m_head->delete_all();
     m_head = 0;
+    length = 0;
 }
 
+void List::deleteVal(int value) {
+    Node *temp = m_head;
+    Node *temp1 = temp->next;
+    if(temp == nullptr){
+        cout << "Value not founded";
+    }
+    if(m_head->data == value){
+        m_head->data = 0;
+        delete m_head;
+        m_head = temp1;
+        length--;
+    }else if(temp1->data == value){
+        Node *aux_node = temp1;
+        temp->next = temp1->next;
+        aux_node->data = 0;
+        delete aux_node;
+    }else{
+        temp = temp->next;
+        temp1 = temp1->next;
+    }
+
+}
+
+/**
 // Eliminar por posición del nodo
-template<typename T>
-void List<T>::del_by_position(int pos)
+void List ::del_by_position(int pos)
 {
-    Node<T> *temp = m_head;
-    Node<T> *temp1 = temp->next;
+    Node  *temp = m_head;
+    Node  *temp1 = temp->next;
 
     if (pos < 1 || pos > m_num_nodes) {
         cout << "Fuera de rango " << endl;
     } else if (pos == 1) {
         m_head = temp->next;
+        length--;
     } else {
         for (int i = 2; i <= pos; i++) {
             if (i == pos) {
-                Node<T> *aux_node = temp1;
+                Node  *aux_node = temp1;
                 temp->next = temp1->next;
                 delete aux_node;
                 m_num_nodes--;
+                length--;
             }
             temp = temp->next;
             temp1 = temp1->next;
@@ -61,23 +88,23 @@ void List<T>::del_by_position(int pos)
     }
 }
 
-
+**/
 // Llenar la Lista aleatoriamente para enteros
-template<typename T>
-void List<T>::fill_random(int dim)
+
+void List ::fill_random(int dim)
 {
     srand(time(NULL));
     for (int i = 0; i < dim; i++) {
-        add_end(rand() % 100);
+        add_end(rand() % 100 +1);
     }
 }
 
 
 // Imprimir la Lista
-template<typename T>
-void List<T>::print()
+
+void List ::print()
 {
-    Node<T> *temp = m_head;
+    Node  *temp = m_head;
     if (!m_head) {
         cout << "La Lista está vacía " << endl;
     } else {
@@ -91,11 +118,11 @@ void List<T>::print()
 }
 
 // Buscar el dato de un nodo
-template<typename T>
-int List<T>::search(int pos)
+
+int List ::search(int pos)
 {
         int bus = 0;
-        Node<T> *temp = m_head;
+        Node  *temp = m_head;
         if (pos < 0) {
             cout << "Error " << endl;
         } else {
@@ -115,9 +142,24 @@ int List<T>::search(int pos)
         cout << endl << endl;
 }
 
+int* List ::searchValAd(int val) {
+    Node  *temp = m_head;
+    while (temp){
+        if(val == temp->data){
+            int* address = &temp->data;
+            return address;
+        }else{
+            temp = temp->next;
+        }
+
+    }
+    return nullptr;
+}
+
+List ::~List() {}
 
 
 
 
-template<typename T>
-List<T>::~List() {}
+
+

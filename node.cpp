@@ -5,25 +5,22 @@
 #include "node.h"
 
 // Constructor por defecto
-template<typename T>
 
-Node<T>::Node()
+Node ::Node()
 {
-    data = NULL;
-    next = NULL;
+    data = -1;
+    next = nullptr;
 }
 
 // Constructor por parámetro
-template<typename T>
-Node<T>::Node(T data_)
+Node ::Node(int data_)
 {
     data = data_;
-    next = NULL;
+    next = nullptr;
 }
 
 // Eliminar todos los Nodos
-template<typename T>
-void Node<T>::delete_all()
+void Node ::delete_all()
 {
     if (next)
         next->delete_all();
@@ -31,12 +28,34 @@ void Node<T>::delete_all()
 }
 
 // Imprimir un Nodo
-template<typename T>
-void Node<T>::print()
-{
+
+void Node ::print() {
     //cout << "Node-> " << "Dato: " << dato << " Direcion: " << this << " Siguiente: " << next << endl;
     cout << data << "-> ";
 }
 
-template<typename T>
-Node<T>::~Node() {}
+Node::~Node() {
+
+}
+
+collector* collector1 = new collector();
+
+void *Node::operator new(size_t sz) {
+
+    if(collector1->free > 0){
+        void* p;
+        p = collector1->getFreeAd();
+        return p;
+
+    }else {
+        void* p = malloc(sz);
+        return p;
+    }
+
+}
+
+void Node::operator delete(void *p) {
+    collector1->setFree((int*) p);
+    collector1->collect();
+}
+

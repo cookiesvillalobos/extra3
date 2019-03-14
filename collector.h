@@ -6,8 +6,7 @@
 #define COLLECTOR_H
 
 #include <iostream>
-#include "list.h"
-#include "list.cpp"
+#include "CList.h"
 
 using namespace std;
 
@@ -15,22 +14,24 @@ using namespace std;
 class collector {
 
     public:
-        collector();
-        ~collector();
-
         int free_d;
 
-        int add(int);
+        void add(int*);
         void collect();
 
         int colle();
+        int length;
+        int free;
+        void setFree(int*);
+        int* getFreeAd();
+        collector();
 
 
 
 
     private:
-        int free;
-        List<int> list;
+        CList clist;
+
 
 
 
